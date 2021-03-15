@@ -3,6 +3,8 @@ import Select from 'react-select';
 
 import '../styles/reactSelect.scss';
 
+import Error from './Error';
+
 
 const optionsType = [
   { value: 'Light Novel', label: 'Ligh Novel'},
@@ -32,28 +34,30 @@ const optionsManga = [
   { value: 'Bruxinha', label: 'Hai Kaburi no Majo'},
   { value: 'Tearmoon', label: 'Tearmoon Teikoku Monogatari'},
   { value: 'Shadow', label: 'Kage no Jitsuryokusha ni Naritakute'},
+  { value: 'Hinowa', label: 'Hinowa ga Crush'},
 ];
 
 const listLink = [
-  { id: 'Disciple', link: 'My Disciple Died Yet Again'},
-  { id: 'Hataraku', link: 'Hataraku Maou-sama'},
-  { id: 'Goblins', link: 'Matador de Goblins'},
-  { id: 'Mushoku', link: 'Mushoku Tensei'},
-  { id: 'Marcha', link: 'Marcha Mortal'},
-  { id: 'Elaina', link: 'Bruxa Errante, a Jornada de Elaina'},
-  { id: 'Eminencia', link: 'A Eminência nas Sombras'},
-  { id: 'Outer', link: 'Outer Ragna'},
-  { id: 'Nobunaga', link: 'Um Trabalho Misterioso Chamado Oda Nobunaga'},
-  { id: 'Heroi', link: 'Como Um Herói Realista Reconstruiu o Reino'},
-  { id: 'Elfa', link: 'Uma Elfa Lésbica e Uma Princesa Amaldiçoada'},
-  { id: 'Apprentice', link: 'My Apprentice: Game Over Again!'},
-  { id: 'Regressor', link: 'Past Life Regressor'},
-  { id: 'Judge', link: 'Judge Lee Han Young'},
-  { id: 'Rasud', link: 'Rasud'},
+  { id: 'Hinowa', link: 'https://drive.google.com/u/1/uc?id=1N5LARvbaWACPO-6OaQ7WY7TShVFpvzYZ&export=download'},
+  { id: 'Disciple', link: ''},
+  { id: 'Hataraku', link: ''},
+  { id: 'Goblins', link: 'https://drive.google.com/u/1/uc?id=1WS-GINjk06pyILnoCI2WAo6GVWNpWK3V&export=download'},
+  { id: 'Mushoku', link: ''},
+  { id: 'Marcha', link: ''},
+  { id: 'Elaina', link: 'https://drive.google.com/u/1/uc?id=1e8bQ6EBMQSxWrkCECDPaWEXOTny7XFiR&export=download'},
+  { id: 'Eminencia', link: ''},
+  { id: 'Outer', link: ''},
+  { id: 'Nobunaga', link: ''},
+  { id: 'Heroi', link: 'https://drive.google.com/u/1/uc?id=1vr8ltNkEcYqLLvmnKpBnABbNSVZtJ2zW&export=download'},
+  { id: 'Elfa', link: ''},
+  { id: 'Apprentice', link: 'https://drive.google.com/u/1/uc?id=1kfG6mksdPpjYOqdGGj_XjIfpo-PX34Y5&export=download'},
+  { id: 'Regressor', link: ''},
+  { id: 'Judge', link: 'https://drive.google.com/u/1/uc?id=16qIkJrFIXM_ji1YcL-7M6MtkFevr4PeS&export=download'},
+  { id: 'Rasud', link: 'https://drive.google.com/u/1/uc?id=1UCTzxIDdwObad3vbS30a5v-Rqq3VyWY_&export=download'},
   { id: 'Apparedan', link: 'https://drive.google.com/u/1/uc?id=15TmvQtHNY7fgfLeFvcxETQZRwngABg2h&export=download'},
-  { id: 'Bruxinha', link: 'Hai Kaburi no Majo'},
-  { id: 'Tearmoon', link: 'Tearmoon Teikoku Monogatari'},
-  { id: 'Shadow', link: 'Kage no Jitsuryokusha ni Naritakute'},
+  { id: 'Bruxinha', link: ''},
+  { id: 'Tearmoon', link: ''},
+  { id: 'Shadow', link: ''},
 ];
 
 
@@ -65,6 +69,7 @@ export default function ReactSelect() {
   const [download, setDownload] = useState('')
   const [active, setActive] = useState(false)
   const [time, setTime] = useState(10)
+  const [error, setError] = useState(false)
 
   useEffect(() => {
       if (type.value == "Mangá") {
@@ -107,24 +112,34 @@ export default function ReactSelect() {
     function handleSend(title) {
       const urlToDownload = listLink.filter(url => url.id == title.value);
       
-      setDownload(urlToDownload[0].link)
+      if ( urlToDownload[0].link !== '' ) {
+        setDownload(urlToDownload[0].link)
 
-      setActive(true);
+        setActive(true);
+      } else {
+        setError(true);
+        setActive(true);
+      }
     }
 
   return (
     <div className={"miniContainer"}>
       { active ? ( 
-        <div className={"wait"}>
-          <strong>{time}</strong>
-          <span>Obrigado, o download já irá começar</span>
-          { download && 
-            <iframe
-              src={download}
-              style={{display: 'none'}}
-            ></iframe>
-          }
-        </div>
+        <>
+          { error ? (
+            <Error/>) : (
+            <div className={"wait"}>
+              <strong>{time}</strong>
+              <span>Obrigado, o download já irá começar</span>
+              { download && 
+                <iframe
+                  src={download}
+                  style={{display: 'none'}}
+                ></iframe>
+              }
+            </div>
+          )}
+        </>
       ) : (
         <>
           <strong>Tipo</strong>
@@ -179,7 +194,7 @@ export default function ReactSelect() {
               Baixar
             </button>
           )}
-          
+
           
         </>
       )}
