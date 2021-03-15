@@ -77,4 +77,24 @@ $baby-blue: #f8faff;
   position: relative;
   outline: 0;
   }
+
+
+  .wait {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    strong{
+      align-self: center;
+      font-size: 6rem;
+      color: #83808C;
+    }
+
+    span {
+      align-self: center;
+      font-size: 18px;
+      color: #83808C;
+    }
+  }
 }
