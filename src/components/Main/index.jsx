@@ -5,8 +5,6 @@ import ReactSelect from '../SelectCard';
 
 import styles from './styles.module.scss'
 
-
-
 export function Main() {
   return (
     <div className={styles.container}> 
@@ -17,5 +15,5 @@ export function Main() {
       </div>
       </div>
     </div>
-    )
+  )
 }

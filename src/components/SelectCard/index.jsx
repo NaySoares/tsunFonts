@@ -3,8 +3,7 @@ import Select from 'react-select';
 
 import styles from './styles.module.scss';
 
-import Error from '../MessageError/Error';
-
+import Error from '../MessageError';
 
 const optionsType = [
   { value: 'Light Novel', label: 'Ligh Novel'},
