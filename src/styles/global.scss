@@ -11,6 +11,11 @@
   --purple-600: #3E355A;
   --purple-650: #383251;
   --purple-800: #312C40;
+
+  --gray-450: #83808C;
+
+  --green-200: #A2D883;
+  --green-700: #4F8C2C;
 }
 
 @media (max-width: 1080px) {
@@ -36,6 +41,10 @@ body, input, text, textarea, select, button {
 
 button {
   cursor: pointer;
+  
+  [disabled] {
+    cursor: not-allowed;
+  }
 }
 
 a {

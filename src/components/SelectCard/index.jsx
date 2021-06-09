@@ -99,11 +99,11 @@ export default function ReactSelect() {
         ...theme,
         colors: {
           ...theme.colors,
-          primary25: '#A2D883',
+          primary25: '#80b462',
           primary: '#4F8C2C',
           primary50: '#4F8C2C',
-          neutral0: 'white',
-          neutral80: 'black',
+          neutral0: '#c5c5c5',
+          neutral80: '#000000',
         }
       }
     }
@@ -127,7 +127,7 @@ export default function ReactSelect() {
         <>
           { error ? (
             <Error/>) : (
-            <div className={"wait"}>
+            <div className={styles.wait}>
               <strong>{time}</strong>
               <span>Obrigado, o download já irá começar</span>
               { download && 
@@ -160,7 +160,7 @@ export default function ReactSelect() {
                 theme={customTheme}
                 onChange={setTitle}
                 placeholder="Selecione uma obra"
-                className={"select"}
+                className={styles.select}
                 options={optionsManga}
                 isFocus
                 isSearching
@@ -176,7 +176,7 @@ export default function ReactSelect() {
                 theme={customTheme}
                 onChange={setTitle}
                 placeholder="Selecione uma obra"
-                className={"select"}
+                className={styles.select}
                 options={optionsLightNovel}
                 isFocus
                 isSearching
@@ -194,8 +194,6 @@ export default function ReactSelect() {
               Baixar
             </button>
           )}
-
-          
         </>
       )}
     </div>
