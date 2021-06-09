@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack serve",
-    "build": "cross-env NODE_ENV=production webpack",
-    "deploy": "aws s3 sync dist/ s3://tsunfonts.com.br --acl public-read"
+    "build": "",
+    "deploy": ""
   },
   "dependencies": {
     "file-loader": "^6.2.0",
