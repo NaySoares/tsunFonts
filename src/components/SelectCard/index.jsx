@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 
-import '../styles/reactSelect.scss';
+import styles from './styles.module.scss';
 
-import Error from './Error';
+import Error from '../MessageError/Error';
 
 
 const optionsType = [
@@ -123,7 +123,7 @@ export default function ReactSelect() {
     }
 
   return (
-    <div className={"miniContainer"}>
+    <div className={styles.miniContainer}>
       { active ? ( 
         <>
           { error ? (
@@ -141,13 +141,14 @@ export default function ReactSelect() {
           )}
         </>
       ) : (
-        <>
+        <> 
+          <h1>Formulário</h1>
           <strong>Tipo</strong>
           <Select
             theme={customTheme}
             onChange={setType}
             placeholder="Selecione um tipo"
-            className={"select"}
+            className={styles.select}
             options={optionsType}
             isFocus
             isSearching
@@ -186,11 +187,11 @@ export default function ReactSelect() {
           )}
           
           { title ? (
-            <button className={"buttonAnimated"} onClick={() => handleSend(title)}>
+            <button className={styles.buttonAnimated} onClick={() => handleSend(title)}>
               Baixar
             </button>
           ) : (
-            <button className={"buttonDisable"}>
+            <button className={styles.buttonDisable}>
               Baixar
             </button>
           )}
